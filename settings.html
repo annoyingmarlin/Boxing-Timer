@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Settings — Boxing Timer</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__brand">
+                <span class="navbar__glove">🥊</span>
+                <span class="navbar__brandtext">
+                    <span class="navbar__title">BOXING</span>
+                    <span class="navbar__subtitle">TIMER</span>
+                </span>
+            </a>
+            <ul class="navbar__links">
+                <li><a href="index.html" class="navbar__link">Timer</a></li>
+                <li><a href="history.html" class="navbar__link">History</a></li>
+                <li><a href="stats.html" class="navbar__link">Stats</a></li>
+                <li><a href="settings.html" class="navbar__link active">Settings</a></li>
+            </ul>
+            <a href="login.html" class="button"><i class="fa-regular fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="settings-layout">
+            <!-- Timer settings -->
+            <div class="card">
+                <h2 class="settings-section-title">Timer Settings</h2>
+
+                <div class="settings-row">
+                    <span class="settings-row__label">Rounds</span>
+                    <div class="stepper" data-target="setRounds" data-min="1" data-step="1">
+                        <button type="button" class="stepper__btn" data-action="dec">−</button>
+                        <span class="stepper__value" id="setRounds">3</span>
+                        <button type="button" class="stepper__btn" data-action="inc">+</button>
+                    </div>
+                </div>
+
+                <div class="settings-row">
+                    <span class="settings-row__label">Round Time (seconds)</span>
+                    <div class="stepper" data-target="setRoundTime" data-min="5" data-step="5">
+                        <button type="button" class="stepper__btn" data-action="dec">−</button>
+                        <span class="stepper__value" id="setRoundTime">150</span>
+                        <button type="button" class="stepper__btn" data-action="inc">+</button>
+                    </div>
+                </div>
+
+                <div class="settings-row">
+                    <span class="settings-row__label">Rest Time (seconds)</span>
+                    <div class="stepper" data-target="setRestTime" data-min="5" data-step="5">
+                        <button type="button" class="stepper__btn" data-action="dec">−</button>
+                        <span class="stepper__value" id="setRestTime">15</span>
+                        <button type="button" class="stepper__btn" data-action="inc">+</button>
+                    </div>
+                </div>
+
+                <div class="settings-row">
+                    <span class="settings-row__label">Long Rest (seconds)</span>
+                    <div class="stepper" data-target="setLongRest" data-min="5" data-step="5">
+                        <button type="button" class="stepper__btn" data-action="dec">−</button>
+                        <span class="stepper__value" id="setLongRest">60</span>
+                        <button type="button" class="stepper__btn" data-action="inc">+</button>
+                    </div>
+                </div>
+
+                <button id="saveSettingsBtn" class="btn btn--full settings-save">Save Settings</button>
+            </div>
+
+            <!-- Theme + sound -->
+            <div class="card">
+                <h2 class="settings-section-title">Theme</h2>
+                <div class="theme-swatches" id="themeSwatches">
+                    <button type="button" class="theme-swatch" data-theme="dark">
+                        <span class="theme-swatch__dot" style="background:#1a1a1a; border-color:#c8102e;"></span>
+                        DARK
+                        <span class="theme-swatch__check">✓</span>
+                    </button>
+                    <button type="button" class="theme-swatch" data-theme="red-glow">
+                        <span class="theme-swatch__dot" style="background:#ff1744;"></span>
+                        RED GLOW
+                        <span class="theme-swatch__check">✓</span>
+                    </button>
+                    <button type="button" class="theme-swatch" data-theme="blue">
+                        <span class="theme-swatch__dot" style="background:#1e6fd9;"></span>
+                        BLUE
+                        <span class="theme-swatch__check">✓</span>
+                    </button>
+                    <button type="button" class="theme-swatch" data-theme="green">
+                        <span class="theme-swatch__dot" style="background:#1caa55;"></span>
+                        GREEN
+                        <span class="theme-swatch__check">✓</span>
+                    </button>
+                </div>
+
+                <h2 class="settings-section-title">Sound</h2>
+                <div class="settings-row">
+                    <span class="settings-row__label">Sound Effects</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="soundEffects" checked>
+                        <span class="toggle__slider"></span>
+                    </label>
+                </div>
+                <div class="settings-row">
+                    <span class="settings-row__label">Round End Bell</span>
+                    <select class="select" id="bellSelect">
+                        <option>Bell 1</option>
+                        <option>Bell 2</option>
+                        <option>Buzzer</option>
+                        <option>Air Horn</option>
+                    </select>
+                </div>
+                <div class="settings-row">
+                    <span class="settings-row__label">Volume</span>
+                    <div class="range-row">
+                        <input type="range" class="range" id="volumeRange" min="0" max="100" value="70">
+                        <span class="range-row__value" id="volumeValue">70%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-strip">
+            <div class="feature-card">
+                <div class="feature-card__icon">⛶</div>
+                <div class="feature-card__title">FULLSCREEN MODE</div>
+                <div class="feature-card__desc">Focus on your workout</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card__icon">⌨</div>
+                <div class="feature-card__title">KEYBOARD SHORTCUTS</div>
+                <div class="feature-card__desc">Space to Start/Pause</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card__icon">📱</div>
+                <div class="feature-card__title">MOBILE FRIENDLY</div>
+                <div class="feature-card__desc">Train anywhere</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card__icon">🚫</div>
+                <div class="feature-card__title">NO ADS</div>
+                <div class="feature-card__desc">100% distraction free</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div>&copy; 2024 Boxing Timer. All rights reserved.</div>
+        <div class="site-footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

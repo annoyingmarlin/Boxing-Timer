@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Stats — Boxing Timer</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__brand">
+                <span class="navbar__glove">🥊</span>
+                <span class="navbar__brandtext">
+                    <span class="navbar__title">BOXING</span>
+                    <span class="navbar__subtitle">TIMER</span>
+                </span>
+            </a>
+            <ul class="navbar__links">
+                <li><a href="index.html" class="navbar__link">Timer</a></li>
+                <li><a href="history.html" class="navbar__link">History</a></li>
+                <li><a href="stats.html" class="navbar__link active">Stats</a></li>
+                <li><a href="settings.html" class="navbar__link">Settings</a></li>
+            </ul>
+            <a href="login.html" class="button"><i class="fa-regular fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="page__header">
+            <div class="page__eyebrow">Your Training</div>
+            <h1 class="page__title">Stats</h1>
+        </div>
+
+        <div class="stats-grid">
+            <div class="summary-box">
+                <div class="summary-box__label">TOTAL WORKOUTS</div>
+                <div class="summary-box__value is-accent" id="statTotalWorkouts">0</div>
+            </div>
+            <div class="summary-box">
+                <div class="summary-box__label">TOTAL TIME</div>
+                <div class="summary-box__value" id="statTotalTime">0:00</div>
+            </div>
+            <div class="summary-box">
+                <div class="summary-box__label">AVG. ROUND TIME</div>
+                <div class="summary-box__value" id="statAvgRound">0:00</div>
+            </div>
+            <div class="summary-box">
+                <div class="summary-box__label">AVG. REST TIME</div>
+                <div class="summary-box__value" id="statAvgRest">0:00</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="page__eyebrow">Time Overview</h2>
+            <div class="chart" id="historyChart" style="height:220px;">
+                <!-- bars inserted by JS -->
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h2 class="page__eyebrow">Longest Session</h2>
+            <p style="color:var(--text-muted); margin-top:10px; font-size:14px;" id="longestSession">
+                Finish a few workouts to see your longest session here.
+            </p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div>&copy; 2024 Boxing Timer. All rights reserved.</div>
+        <div class="site-footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

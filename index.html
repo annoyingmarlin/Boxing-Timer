@@ -4,80 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Boxing Timer</title>
 </head>
 <body>
-    <!-- Navbar section-->
-    <nav class = "navbar">
-        <div class = "navbar__container">
-            <div class = "logo_container">
-                <img href="index.html" src="logo.png" alt="Logo" class = "navbar__logo">
-            </div>
-
-            <ul class = "navbar__right">
-                <li class = "navbar__btn">
-                    <a href="index.html" class = "button"><i class="fa-regular fa-user"></i> Login</a>
-                </li>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__brand">
+                <span class="navbar__glove">🥊</span>
+                <span class="navbar__brandtext">
+                    <span class="navbar__title">BOXING</span>
+                    <span class="navbar__subtitle">TIMER</span>
+                </span>
+            </a>
+            <ul class="navbar__links">
+                <li><a href="index.html" class="navbar__link active">Timer</a></li>
+                <li><a href="history.html" class="navbar__link">History</a></li>
+                <li><a href="stats.html" class="navbar__link">Stats</a></li>
+                <li><a href="settings.html" class="navbar__link">Settings</a></li>
             </ul>
+            <a href="login.html" class="button"><i class="fa-regular fa-user"></i> Login</a>
         </div>
     </nav>
 
-    <!--- Timer -->
-    <div class="timer">
-        <div class="timer_container">  
-            <div id="timerDisplay">00:00</div>
-            <div id="roundDisplay">Round: 0</div>
-            <button id="pauseResumeBtn">Pause</button>
-            <button id="resetBtn">Reset</button>
+    <main>
+        <!-- Hero: boxer image + timer -->
+        <section class="hero">
+            <div class="hero__timer">
+                <div class="timer-card">
+                    <button type="button" id="fullscreenBtn" class="fullscreen-btn" aria-label="Enter fullscreen">⛶</button>
+                    <div class="timer-card__round">ROUND <span id="roundNum">1</span> OF <span id="totalRoundsLabel">3</span></div>
+                    <div class="timer-ring">
+                        <div id="timerDisplay">00:00</div>
+                    </div>
+                    <div class="timer-card__state" id="timerState">READY</div>
+                    <div class="timer-card__controls">
+                        <button id="pauseResumeBtn" class="btn btn--dark">Pause</button>
+                        <button id="resetBtn" class="btn btn--accent">Reset</button>
+                    </div>
+                </div>
+
+                <div class="upnext-card">
+                    <div class="upnext-card__label">UP NEXT</div>
+                    <div class="upnext-card__row">
+                        <span id="upNextLabel">REST</span>
+                        <span id="upNextTime">00:00</span>
+                    </div>
+                    <div class="upnext-card__divider"></div>
+                    <div class="upnext-card__row upnext-card__row--total">
+                        <span>TOTAL TIME</span>
+                        <span id="totalTimeDisplay">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timer setup form -->
+        <section class="setup">
+            <div class="setup__container">
+                <form id="timerForm" class="setup__form">
+                    <div class="setup__stats">
+                        <div class="stat-box">
+                            <label for="rounds">Rounds</label>
+                            <input type="number" id="rounds" name="rounds" min="1" value="3" required>
+                        </div>
+
+                        <div class="stat-box">
+                            <label for="roundTime">Round Time (sec)</label>
+                            <input type="number" id="roundTime" name="roundTime" min="1" value="180" required>
+                        </div>
+
+                        <div class="stat-box">
+                            <label for="restTime">Rest Time (sec)</label>
+                            <input type="number" id="restTime" name="restTime" min="1" value="60" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn--full">Start Timer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div>&copy; 2024 Boxing Timer. All rights reserved.</div>
+        <div class="site-footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact</a>
         </div>
-    </div>
+    </footer>
 
-    <!-- timer input Section -->
-    <div class="input">
-        <div class="input__container">
-            <form id="timerForm">
-                <div class="input__group">
-                    <label for="rounds">Rounds:</label>
-                    <input type="number" id="rounds" name="rounds" min="1" value="3" required><br><br>
-                </div>
-
-                <div class="input__group">
-                    <label for="roundTime">Round Time (seconds):</label>
-                    <input type="number" id="roundTime" name="roundTime" min="1" value="180" required><br><br>
-                </div>
-
-                <div class="input__group">
-                    <label for="restTime">Rest Time (seconds):</label>
-                    <input type="number" id="restTime" name="restTime" min="1" value="60" required><br><br>
-                </div>
-
-                <button type="submit">Start Timer</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Workout History Section -->
-<div class="history">
-    <div class="history__container">
-        <h2 class="history__title">Workout History</h2>
-        <table class="history__table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Rounds</th>
-                    <th>Length</th>
-                    <th>Rest</th>
-                    <th>Set Again</th>
-                </tr>
-            </thead>
-            <tbody id="historyBody">
-                <!-- rows get inserted here by JS -->
-            </tbody>
-        </table>
-    </div>
-</div>
+    <button type="button" id="fullscreenExitBtn" class="fullscreen-exit-btn" aria-label="Exit fullscreen">✕ Exit Fullscreen</button>
 
     <script src="script.js"></script>
-
 </body>
 </html>
