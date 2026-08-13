@@ -77,6 +77,13 @@ function applyTheme(theme) {
 const bellSound = new Audio('sounds/bell.mp3');
 const whistleSound = new Audio('sounds/whistle.mp3');
 
+bellSound.addEventListener('error', () => {
+    console.warn('[Boxing Timer] Could not load sounds/bell.mp3 — add that file to the sounds/ folder.');
+});
+whistleSound.addEventListener('error', () => {
+    console.warn('[Boxing Timer] Could not load sounds/whistle.mp3 — add that file to the sounds/ folder.');
+});
+
 function playClip(sound, volumePercent) {
     if (!sound) return;
     try {
